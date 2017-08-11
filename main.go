@@ -74,26 +74,32 @@ func main() {
 			c.JSON(400, gin.H{"Error": "Invalid request"})
 			return
 		}
+		request.Host = strings.TrimSpace(request.Host)
+
 		if len(request.Host) <= 0 {
 			c.JSON(400, gin.H{"Error": "Invalid request"})
 			return
 		}
 
-		request.Host = strings.TrimSpace(request.Host)
 		internalHost := request.Host
 		if !govalidator.IsDialString(request.Host) {
 			if !govalidator.IsHost(request.Host) {
-				c.JSON(400, gin.H{"Error": "Invalid hostname"})
+				c.JSON(400, gin.H{"Host": request.Host, "Error": "Invalid hostname"})
 				return
 			}
 			internalHost += ":22"
 		}
 
+		log.Printf("Getting Keys for '%s'\n", internalHost)
+
 		keys, err := sshkeys.GetKeys(internalHost, timeout)
 		if err != nil {
-			c.JSON(500, gin.H{"Error": err.Error()})
+			log.Printf("'%s' Failed: %s\n", internalHost, err.Error())
+			c.JSON(500, gin.H{"Host": request.Host, "Error": err.Error()})
 			return
 		}
+
+		log.Printf("Got %d Keys for '%s'\n", len(keys), internalHost)
 
 		var printableKeys []gin.H
 
