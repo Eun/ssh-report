@@ -1,0 +1,70 @@
+{
+	"ImportPath": "github.com/Eun/ssh-report",
+	"GoVersion": "go1.8",
+	"GodepVersion": "v79",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gin-contrib/sse",
+			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin",
+			"Comment": "v1.2-85-g81007d2",
+			"Rev": "81007d2ce0176f7a9ce52dd12e56edd7ef40e72c"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/binding",
+			"Comment": "v1.2-85-g81007d2",
+			"Rev": "81007d2ce0176f7a9ce52dd12e56edd7ef40e72c"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/json",
+			"Comment": "v1.2-85-g81007d2",
+			"Rev": "81007d2ce0176f7a9ce52dd12e56edd7ef40e72c"
+		},
+		{
+			"ImportPath": "github.com/gin-gonic/gin/render",
+			"Comment": "v1.2-85-g81007d2",
+			"Rev": "81007d2ce0176f7a9ce52dd12e56edd7ef40e72c"
+		},
+		{
+			"ImportPath": "github.com/golang/protobuf/proto",
+			"Rev": "1909bc2f63dc92bb931deace8b8312c4db72d12f"
+		},
+		{
+			"ImportPath": "github.com/heroku/x/hmetrics",
+			"Rev": "eee91b2a11a7017d7b5ef6bc989cdfd91363691a"
+		},
+		{
+			"ImportPath": "github.com/heroku/x/hmetrics/onload",
+			"Rev": "eee91b2a11a7017d7b5ef6bc989cdfd91363691a"
+		},
+		{
+			"ImportPath": "github.com/json-iterator/go",
+			"Comment": "jsoniter-go-0.9.19-18-g8877891",
+			"Rev": "887789156aeca0b292a5080b24e650d856c28933"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-isatty",
+			"Comment": "v0.0.2",
+			"Rev": "fc9e8d8ef48496124e79ae0df75490096eccf6fe"
+		},
+		{
+			"ImportPath": "github.com/ugorji/go/codec",
+			"Rev": "5efa3251c7f7d05e5d9704a69a984ec9f1386a40"
+		},
+		{
+			"ImportPath": "golang.org/x/sys/unix",
+			"Rev": "7a4fde3fda8ef580a89dbae8138c26041be14299"
+		},
+		{
+			"ImportPath": "gopkg.in/go-playground/validator.v8",
+			"Comment": "v8.18.2",
+			"Rev": "5f1438d3fca68893a817e4a66806cea46a9e4ebf"
+		},
+		{
+			"ImportPath": "gopkg.in/yaml.v2",
+			"Rev": "4c78c975fe7c825c6d1466c42be594d1d6f3aba6"
+		}
+	]
+}

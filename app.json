@@ -1,0 +1,12 @@
+{
+  "name": "ssh-report",
+  "description": "ssh-report get some infors about your ssh server ",
+  "keywords": [
+    "go",
+    "ssh-report"
+  ],
+  "image": "heroku/go:1.8",
+  "mount_dir": "src/github.com/Eun/ssh-report",
+  "website": "http://github.com/Eun/ssh-report",
+  "repository": "http://github.com/Eun/ssh-report"
+}
