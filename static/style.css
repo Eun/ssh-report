@@ -51,18 +51,18 @@ section.result ul {
 }
 
 section.result li {
-    margin: 0;
+    margin: 1rem 0;
     padding: 0;
     list-style: none;
 }
 
 section.result span{
-    white-space: pre;
+    white-space: normal;
 }
 
 section.result small{
     margin-left: 1rem;
-    white-space: pre;
+    white-space: normal;
 }
 
 
