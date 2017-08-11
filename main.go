@@ -76,7 +76,7 @@ func main() {
 			return
 		}
 		defer f.Close()
-		hasher := sha256.New()
+		hasher := sha1.New()
 		if _, err := io.Copy(hasher, f); err != nil {
 			c.JSON(500, gin.H{"Error": err.Error()})
 			return
