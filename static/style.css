@@ -56,6 +56,15 @@ section.result li {
     list-style: none;
 }
 
+section.result span{
+    white-space: pre;
+}
+
+section.result small{
+    margin-left: 1rem;
+    white-space: pre;
+}
+
 
 section.working>div {
     display: block;

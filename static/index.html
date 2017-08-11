@@ -6,7 +6,6 @@
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
 	<title>ssh.report</title>
     <link type='text/css' media='all' rel="stylesheet" href="style.css" />
-    <script src="atomic.js"></script>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) { 
             document.querySelector(".query").style.display = "block";
@@ -26,18 +25,27 @@
                     
                     var data = JSON.parse(this.response);
                     var html = "";
+
+                    html += "<ul>";
+
                     for (var i = 0; i < data.PublicKeys.length; i++) {
                         html += "<li>";
-                        html += data.PublicKeys[i].Key;
+                        html += "<span>"+data.PublicKeys[i].Key+"</span>";
+                        html += "<small>MD5:  "+data.PublicKeys[i].MD5+"</small>";
+                        html += "<small>SHA1: "+data.PublicKeys[i].SHA1+"</small>";
                         html += "</li>";
                     }
+
+                    html += "</ul>";
+                    document.querySelector(".working").style.display = "none";
                     document.querySelector(".result").style.display = "block";
-                    document.querySelector(".result").innerHTML = "<ul>"+html+"</ul>";
+                    document.querySelector(".result").innerHTML = html;
                 };
                 request.onerror = function() {
                     var data = JSON.parse(this.response);
+                    document.querySelector(".working").style.display = "none";
                     document.querySelector(".result").style.display = "block";
-                    document.querySelector(".result").innerHTML =  "Error " + this.status + ": " + data.Error;
+                    document.querySelector(".result").innerHTML =  "<pre>Error " + this.status + ": " + data.Error+"</pre>";
                 }
                 request.open("POST", "check");
                 request.setRequestHeader("Content-Type", "application/json");
