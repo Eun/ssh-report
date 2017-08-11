@@ -6,19 +6,36 @@
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
 	<title>ssh.report</title>
     <link type='text/css' media='all' rel="stylesheet" href="style.css" />
+    <script src="fetchival.js"></script>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) { 
             document.querySelector(".query").style.display = "block";
             document.querySelector("form").addEventListener("submit", function(event) {
                 event.stopPropagation();
                 event.preventDefault();
-                var request = new XMLHttpRequest();
-                request.onload = function(elements) {
-                    console.log(JSON.parse(elements));
+                /*var request = new XMLHttpRequest();
+                request.onload = function() {
+                    if this.response
+                    console.log(JSON.parse(this.response));
                 };
+                request.onerror = function() {
+
+                }
                 request.open("POST", "check");
                 request.setRequestHeader("Content-Type", "application/json");
-                request.send(JSON.stringify({Host:document.querySelector("#host").value}));
+                request.send(JSON.stringify({Host:document.querySelector("#host").value}));*/$
+
+
+                fetchival('/check').post({
+                    Host: document.querySelector("#host").value,
+                })
+                .then(function(json) {
+                    console.log(err)
+                })
+                .catch(function(err) {
+                    console.log(err)
+                })
+
 
             });
         });
