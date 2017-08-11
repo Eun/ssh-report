@@ -6,7 +6,7 @@
 	<meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
 	<title>ssh.report</title>
     <link type='text/css' media='all' rel="stylesheet" href="style.css" />
-    <script src="pegasus.min.js"></script>
+    <script src="atomic.js"></script>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) { 
             document.querySelector(".query").style.display = "block";
@@ -29,16 +29,7 @@
                 })*/
 
 
-                var request = pegasus("/check");
-                request.then(
-                    function(data, xhr) {
-                        console.log(JSON.stringify(data));
-                    },
-                    function(data, xhr) {
-                        console.error(data, xhr.status)
-                    }
-                );
-
+                
 
             });
         });
@@ -57,6 +48,7 @@
                 <input type="submit" name="action" value="OK"/>
             </form>
         </section>
+        <section class="working"><div></div></section>
         <section class="result">
         </section>
     </main>
