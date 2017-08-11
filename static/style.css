@@ -45,7 +45,7 @@ section.result, section.working {
 }
 
 section.result div {
-    margin: 1rem;
+    padding: 1rem;
     background: #cecece;
     overflow: scroll;
     font-family: monospace;
