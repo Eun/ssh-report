@@ -4,6 +4,10 @@
 	"GodepVersion": "v79",
 	"Deps": [
 		{
+			"ImportPath": "github.com/Eun/sshkeys",
+			"Rev": "3c68878c23ab02241844c257a4d04d3913a0372d"
+		},
+		{
 			"ImportPath": "github.com/gin-contrib/sse",
 			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
 		},
@@ -52,6 +56,22 @@
 		{
 			"ImportPath": "github.com/ugorji/go/codec",
 			"Rev": "5efa3251c7f7d05e5d9704a69a984ec9f1386a40"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/curve25519",
+			"Rev": "b176d7def5d71bdd214203491f89843ed217f420"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ed25519",
+			"Rev": "b176d7def5d71bdd214203491f89843ed217f420"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ed25519/internal/edwards25519",
+			"Rev": "b176d7def5d71bdd214203491f89843ed217f420"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/ssh",
+			"Rev": "b176d7def5d71bdd214203491f89843ed217f420"
 		},
 		{
 			"ImportPath": "golang.org/x/sys/unix",
