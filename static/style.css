@@ -54,15 +54,18 @@ section.result li {
     margin: 1rem 0;
     padding: 0;
     list-style: none;
+    overflow: scroll;
 }
 
 section.result span{
     white-space: normal;
+    display: block;
 }
 
 section.result small{
     margin-left: 1rem;
     white-space: normal;
+    display: block;
 }
 
 
