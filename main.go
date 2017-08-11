@@ -68,6 +68,21 @@ func main() {
 	type CheckRequest struct {
 		Host string
 	}
+	
+	router.GET("/hash", func(c *gin.Context) {
+		f, err := os.Open(os.Args[0])
+		if err != nil {
+			c.JSON(500, gin.H{"Error": err.Error()})
+			return
+		}
+		defer f.Close()
+		hasher := sha256.New()
+		if _, err := io.Copy(hasher, f); err != nil {
+			c.JSON(500, gin.H{"Error": err.Error()})
+			return
+		}
+		c.JSON(200, gin.H{"Hash": hasher.Sum(nil)})
+	})
 
 	router.POST("/check", func(c *gin.Context) {
 		var request CheckRequest
