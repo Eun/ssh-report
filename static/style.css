@@ -44,6 +44,13 @@ section.result, section.working {
     display: none;
 }
 
+section.result div {
+    margin: 1rem;
+    background: #cecece;
+    overflow: scroll;
+    font-family: monospace;
+}
+
 section.result ul {
     margin: 0;
     padding: 0;
@@ -54,11 +61,16 @@ section.result li {
     margin: 1rem 0;
     padding: 0;
     list-style: none;
-    overflow: scroll;
 }
 
-section.result span{
+
+section.result span {
     white-space: nowrap;
+    display: block;
+}
+
+section.result pre {
+    white-space: pre;
     display: block;
 }
 
