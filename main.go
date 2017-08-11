@@ -81,7 +81,7 @@ func main() {
 			c.JSON(500, gin.H{"Error": err.Error()})
 			return
 		}
-		c.JSON(200, gin.H{"Hash": hasher.Sum(nil)})
+		c.JSON(200, gin.H{"Hash": hex.EncodeToString(hasher.Sum(nil))})
 	})
 
 	router.POST("/check", func(c *gin.Context) {
