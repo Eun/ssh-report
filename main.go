@@ -91,7 +91,7 @@ func main() {
 
 		keys, err := sshkeys.GetKeys(internalHost, timeout)
 		if err != nil {
-			c.JSON(500, gin.H{"Error": err})
+			c.JSON(500, gin.H{"Error": err.Error()})
 			return
 		}
 
