@@ -16,21 +16,32 @@
 
                 document.querySelector(".result").style.display = "none";
                 document.querySelector(".working").style.display = "block";
-                /*fetchival('/check').post({
-                    Host: document.querySelector("#host").value,
-                })
-                .then(function(json) {
-                    console.log(json)
-                })
-                .catch(function(err) {
-                    console.log(arguments)
+            
+                var request = new XMLHttpRequest();
+                request.onload = function() {
+                    if (this.status != 200) {
+                        request.onerror()
+                        return
+                    }
+                    
+                    var data = JSON.parse(this.response);
+                    var html = "";
+                    for (var i = 0; i < data.PublicKeys.length; i++) {
+                        html += "<li>";
+                        html += data.PublicKeys[i].Key;
+                        html += "</li>";
+                    }
                     document.querySelector(".result").style.display = "block";
-                    document.querySelector(".result").innerHTML = "Error: " + err;
-                })*/
-
-
-                
-
+                    document.querySelector(".result").innerHTML = "<ul>"+html+"</ul>";
+                };
+                request.onerror = function() {
+                    var data = JSON.parse(this.response);
+                    document.querySelector(".result").style.display = "block";
+                    document.querySelector(".result").innerHTML =  "Error " + this.status + ": " + data.Error;
+                }
+                request.open("POST", "check");
+                request.setRequestHeader("Content-Type", "application/json");
+                request.send(JSON.stringify({Host:document.querySelector("#host").value}));
             });
         });
     </script>

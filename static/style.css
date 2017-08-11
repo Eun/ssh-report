@@ -44,6 +44,19 @@ section.result, section.working {
     display: none;
 }
 
+section.result ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+section.result li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
 section.working>div {
     display: block;
     width: 40px;
