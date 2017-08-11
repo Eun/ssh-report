@@ -41,14 +41,6 @@
 			"Rev": "1909bc2f63dc92bb931deace8b8312c4db72d12f"
 		},
 		{
-			"ImportPath": "github.com/heroku/x/hmetrics",
-			"Rev": "eee91b2a11a7017d7b5ef6bc989cdfd91363691a"
-		},
-		{
-			"ImportPath": "github.com/heroku/x/hmetrics/onload",
-			"Rev": "eee91b2a11a7017d7b5ef6bc989cdfd91363691a"
-		},
-		{
 			"ImportPath": "github.com/json-iterator/go",
 			"Comment": "jsoniter-go-0.9.19-18-g8877891",
 			"Rev": "887789156aeca0b292a5080b24e650d856c28933"

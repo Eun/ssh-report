@@ -15,7 +15,6 @@ import (
 	"github.com/asaskevich/govalidator"
 
 	"github.com/gin-gonic/gin"
-	_ "github.com/heroku/x/hmetrics/onload"
 )
 
 const (
@@ -54,7 +53,10 @@ func main() {
 	port := os.Getenv("PORT")
 
 	if port == "" {
-		log.Fatal("$PORT must be set")
+		port = os.Getenv("HTTP_PLATFORM_PORT")
+		if port == "" {
+			log.Fatal("$PORT must be set")
+		}
 	}
 
 	router := gin.New()
