@@ -69,6 +69,7 @@ func main() {
 		Host string
 	}
 	
+	/*
 	router.GET("/hash", func(c *gin.Context) {
 		f, err := os.Open(os.Args[0])
 		if err != nil {
@@ -83,6 +84,7 @@ func main() {
 		}
 		c.JSON(200, gin.H{"Hash": hex.EncodeToString(hasher.Sum(nil))})
 	})
+	*/
 
 	router.POST("/check", func(c *gin.Context) {
 		var request CheckRequest
