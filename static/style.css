@@ -58,13 +58,13 @@ section.result li {
 }
 
 section.result span{
-    white-space: normal;
+    white-space: nowrap;
     display: block;
 }
 
 section.result small{
     margin-left: 1rem;
-    white-space: normal;
+    white-space: nowrap;
     display: block;
 }
 
