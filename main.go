@@ -5,7 +5,6 @@ import (
 	"crypto/sha1"
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -13,6 +12,7 @@ import (
 	"golang.org/x/crypto/ssh"
 
 	"github.com/Eun/sshkeys"
+	"github.com/asaskevich/govalidator"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/heroku/x/hmetrics/onload"
@@ -59,17 +59,12 @@ func main() {
 
 	router := gin.New()
 	router.Use(gin.Logger())
-	router.LoadHTMLGlob("templates/*.tmpl.html")
-	router.Static("/static", "static")
-
-	router.GET("/", func(c *gin.Context) {
-		c.HTML(http.StatusOK, "index.tmpl.html", nil)
-	})
+	router.Static("/", "static")
 
 	timeout, _ := time.ParseDuration("30s")
 
 	type CheckRequest struct {
-		Host string `form:"host"`
+		Host string
 	}
 
 	router.POST("/check", func(c *gin.Context) {
@@ -84,7 +79,17 @@ func main() {
 			return
 		}
 
-		keys, err := sshkeys.GetKeys(request.Host, timeout)
+		request.Host = strings.TrimSpace(request.Host)
+		internalHost := request.Host
+		if !govalidator.IsDialString(request.Host) {
+			if !govalidator.IsHost(request.Host) {
+				c.JSON(400, gin.H{"Error": "Invalid hostname"})
+				return
+			}
+			internalHost += ":22"
+		}
+
+		keys, err := sshkeys.GetKeys(internalHost, timeout)
 		if err != nil {
 			c.JSON(500, gin.H{"Error": err})
 			return

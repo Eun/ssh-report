@@ -8,6 +8,11 @@
 			"Rev": "3c68878c23ab02241844c257a4d04d3913a0372d"
 		},
 		{
+			"ImportPath": "github.com/asaskevich/govalidator",
+			"Comment": "v6-23-g15028e8",
+			"Rev": "15028e809df8c71964e8efa6c11e81d5c0262302"
+		},
+		{
 			"ImportPath": "github.com/gin-contrib/sse",
 			"Rev": "22d885f9ecc78bf4ee5d72b937e4bbcdc58e8cae"
 		},
