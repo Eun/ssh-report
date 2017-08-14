@@ -3,7 +3,9 @@ package main
 import (
 	"crypto/md5"
 	"crypto/sha1"
+	"encoding/hex"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -68,9 +70,8 @@ func main() {
 	type CheckRequest struct {
 		Host string
 	}
-	
-	/*
-	router.GET("/hash", func(c *gin.Context) {
+
+	router.POST("/hash", func(c *gin.Context) {
 		f, err := os.Open(os.Args[0])
 		if err != nil {
 			c.JSON(500, gin.H{"Error": err.Error()})
@@ -84,7 +85,6 @@ func main() {
 		}
 		c.JSON(200, gin.H{"Hash": hex.EncodeToString(hasher.Sum(nil))})
 	})
-	*/
 
 	router.POST("/check", func(c *gin.Context) {
 		var request CheckRequest
@@ -109,6 +109,17 @@ func main() {
 			internalHost += ":22"
 		}
 
+		log.Printf("Getting Version for '%s'\n", internalHost)
+
+		version, err := sshkeys.GetVersion(internalHost, timeout)
+		if err != nil {
+			log.Printf("'%s' Failed: %s\n", internalHost, err.Error())
+			c.JSON(500, gin.H{"Host": request.Host, "Error": err.Error()})
+			return
+		}
+
+		log.Printf("Got '%d' Version for '%s'\n", version, internalHost)
+
 		log.Printf("Getting Keys for '%s'\n", internalHost)
 
 		keys, err := sshkeys.GetKeys(internalHost, timeout)
@@ -130,7 +141,7 @@ func main() {
 			})
 		}
 
-		c.JSON(200, gin.H{"Host": request.Host, "PublicKeys": printableKeys})
+		c.JSON(200, gin.H{"Host": request.Host, "Version": version, "PublicKeys": printableKeys})
 
 	})
 

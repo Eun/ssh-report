@@ -5,7 +5,7 @@
 	"Deps": [
 		{
 			"ImportPath": "github.com/Eun/sshkeys",
-			"Rev": "3c68878c23ab02241844c257a4d04d3913a0372d"
+			"Rev": "10ec2819d5a270899da80aa0660f31ec14ca69c7"
 		},
 		{
 			"ImportPath": "github.com/asaskevich/govalidator",

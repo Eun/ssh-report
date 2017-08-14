@@ -9,14 +9,15 @@
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function(event) { 
             document.querySelector(".query").style.display = "block";
-            document.querySelector("form").addEventListener("submit", function(event) {
-                event.stopPropagation();
-                event.preventDefault();
 
+
+            function checkHost() {
                 document.querySelector("form input[type=submit]").disabled = true;
 
                 document.querySelector(".result").style.display = "none";
                 document.querySelector(".working").style.display = "block";
+
+                document.location.hash = "#" + document.querySelector("#host").value;
             
                 var request = new XMLHttpRequest();
                 request.onload = function() {
@@ -25,8 +26,13 @@
                         return
                     }
                     
+                    
                     var data = JSON.parse(this.response);
                     var html = "";
+
+                    html += "<h3>Version</h3>";
+                    html += "<div><pre>"+data.Version+"</pre></div>";
+                    html += "<h3>Public Keys</h3>";
 
                     html += "<ul>";
 
@@ -51,10 +57,23 @@
                     document.querySelector(".result").style.display = "block";
                     document.querySelector(".result").innerHTML =  "<div><pre>Error " + this.status + ": " + data.Error+"</pre></div>";
                 }
+
                 request.open("POST", "check");
                 request.setRequestHeader("Content-Type", "application/json");
                 request.send(JSON.stringify({Host:document.querySelector("#host").value}));
+            }
+
+            document.querySelector("form").addEventListener("submit", function(event) {
+                event.stopPropagation();
+                event.preventDefault();
+                checkHost();
             });
+
+            if (document.location.hash != null  && document.location.hash != undefined && document.location.hash.length > 0) {
+                document.querySelector("#host").value = document.location.hash.replace("#", "");
+                checkHost();
+            }
+
         });
     </script>
 </head>
